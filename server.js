@@ -14,6 +14,7 @@ const hotelRoute = require('./hotel.route');
 const vehicleRoute = require('./vehicle.route');
 const roomRoute = require('./room.route');
 const ayurvedicRoute = require('./ayurwedicReg.route');
+const appointmentRoute = require('./appointment.route.js');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, {useNewUrlParser: true}).then(
@@ -32,6 +33,7 @@ app.use('/hotel',hotelRoute);
 app.use('/vehicle',vehicleRoute);
 app.use('/room',roomRoute);
 app.use('/ayurvedic',ayurvedicRoute);
+app.use('/appointment',appointmentRoute);
 
 app.listen(PORT, function(){
     console.log('Server is running on port: ',PORT);
