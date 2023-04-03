@@ -16,9 +16,28 @@ Guide = new Schema({
     phoneNu: {
         type: String
     },
-    Image: {
+    gender: {
+        type: String
+    },
+    Licence: {
+        type: String
+    },
+    Education: {
         type: String
     }
+    ,
+    sinhala: {
+        type: String
+    }
+    ,
+    English: {
+        type: String
+    }
+    ,
+    Korean: {
+        type: String
+    }
+   
  },
   {
     collation: 'guide'
