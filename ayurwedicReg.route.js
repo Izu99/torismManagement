@@ -4,7 +4,7 @@ const ayurvedaRoutes = express.Router();
 // Require the 'register.model' module and assign it to the variable 'Customer'
 let Ayurveda = require('./ayurwedicReg.model');
 // Define a route for adding a new customer
-ayurvedaRoutes.route('/addAyurveda').post(function (req,res){
+ayurvedaRoutes.route('/add').post(function (req,res){
     // Create a new instance of the 'Customer' model with the data from the request body
     let ayurveda = new Ayurveda(req.body);
      // Save the new customer to the database

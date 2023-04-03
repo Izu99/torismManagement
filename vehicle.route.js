@@ -74,16 +74,6 @@ vehicleRoutes.route('/Update/:id').post(function (req,res){
     });
 });
 
-// // Define a DELETE route at '/delete/:id'
-// vehicleRoutes.route('/vehicleDelete/:id').delete(function(req,res){
-//     // Use the 'findByIdAndRemove' method of the 'Customer' model to delete a customer by ID
-//     Vehicle.findByIdAndRemove({_id:req.params.id}, function (err, guide){
-//          // If there is an error, respond with the error message in JSON format
-//         if(err)res.json(err);
-//         // If the customer is successfully deleted, respond with a success message in JSON format
-//         else res.json('Successfully Removed');
-//     });
-// });
 
 vehicleRoutes.route('/delete/:id').get(function(req,res){
     Vehicle.findByIdAndRemove({_id:req.params.id}, function (err, customers){

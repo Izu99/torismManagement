@@ -21,7 +21,7 @@ hotelRoutes.route('/hotelAdd').post(function (req,res){
 
 //get all details
 // Define a route for getting all customers
-hotelRoutes.route('/hotelGetAll').get(function(req, res) {
+hotelRoutes.route('/GetAll').get(function(req, res) {
     // Find all documents in the 'Customer' collection
     Hotel.find(function(err, hotel) {
         if (err) {
@@ -57,7 +57,7 @@ hotelRoutes.route('/edit/:id').get(function (req,res){
     });
 });
 // Define a route for updating a customer with a given id
-hotelRoutes.route('/hotelUpdate/:id').post(function (req,res){
+hotelRoutes.route('/update/:id').post(function (req,res){
     // Get the id parameter from the request URL
     let id = req.params.id;
     // Find the customer with the given id in the database
@@ -86,13 +86,10 @@ hotelRoutes.route('/hotelUpdate/:id').post(function (req,res){
     });
 });
 
-// Define a DELETE route at '/delete/:id'
-hotelRoutes.route('/hotelDelete/:id').delete(function(req,res){
-    // Use the 'findByIdAndRemove' method of the 'Customer' model to delete a customer by ID
-    Hotel.findByIdAndRemove({_id:req.params.id}, function (err, guide){
-         // If there is an error, respond with the error message in JSON format
+hotelRoutes.route('/delete/:id').get(function(req,res){
+    Hotel.findByIdAndRemove({_id:req.params.id}, function (err, customers){
         if(err)res.json(err);
-        // If the customer is successfully deleted, respond with a success message in JSON format
+
         else res.json('Successfully Removed');
     });
 });
