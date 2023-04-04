@@ -34,18 +34,6 @@ registerRoutes.route('/getall').get(function(req, res) {
     });
 });
 
-// registerRoutes.route('/:id').get(function (req, res){
-//     let campusid = req.params.id;
-//     console.log("yuor campus id is " +campusid);
-//     Student.findOne({$and:[{campusid : campusid}]},function (err,std){
-//         if(err)
-//             console.log(err);
-//         else{
-//             res.json(std)
-//         }
-//     });
-
-// });
 
 
 
@@ -93,7 +81,7 @@ registerRoutes.route('/update/:id').post(function (req,res){
 });
 
 // Define a DELETE route at '/delete/:id'
-registerRoutes.route('/delete/:id').delete(function(req,res){
+registerRoutes.route('/delete/:id').get(function(req,res){
     // Use the 'findByIdAndRemove' method of the 'Customer' model to delete a customer by ID
     Customer.findByIdAndRemove({_id:req.params.id}, function (err, customer){
          // If there is an error, respond with the error message in JSON format
@@ -103,58 +91,6 @@ registerRoutes.route('/delete/:id').delete(function(req,res){
     });
 });
 
-
-// registerRoutes.route('/login').post(function (req, res){
-//     let id = req.body.username;
-//     let password = req.body.password;
-
-//     console.log("Your Login Details" +id+ +password);
-
-//     let customer = new Customer(req.body);
-
-//     Customer.findOne({$and:[{nic : nic},{password : password}]})
-//         .then(customer => {
-//             if(customer){
-//                 customer.name = req.body.name;
-//                 res.status(200).send({
-//                     message: "Successful Login"
-//                 });
-//             }
-//             else{
-//                 res.status(200).send({
-//                     message: "User Not Found"
-//                 });
-//             }
-//         })
-// });
-
-// Define a POST route at '/login'
-// registerRoutes.route('/login').post(function (req, res) {
-//     // Retrieve NIC and password from the request body
-   
-//     let nic = req.body.username;
-//     let password = req.body.password;
-//     let customer = new Customer(req.body);
-//     // Log the login details for debugging purposes
-//     console.log("Your Login Details " + nic + " " + password);
-//     // Use the 'findOne' method of the 'Customer' model to find a customer with the specified email and password
-//     Customer.findOne({ nic: nic, password: password }, function (err, customer) {
-//         // If there is an error, respond with a 500 Internal Server Error message
-//         if (err) {
-//             console.log(err);
-//             res.status(500).send("Internal Server Error");
-//             // If no customer is found with the specified nic and password, respond with a 401 Unauthorized message
-//         } else if (!customer) {
-//             res.status(401).send("Invalid Credentials");
-//             // If a customer is found with the specified nic and password, respond with a 200 OK message and the customer object in JSON format
-//         } else {
-//             res.status(200).send({
-//                 message: "Successful Login",
-//                 customer: customer
-//             });
-//         }
-//     });
-// });
 
 
 registerRoutes.route('/regLogin').post(function (req, res) {
