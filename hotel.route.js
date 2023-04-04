@@ -34,18 +34,6 @@ hotelRoutes.route('/GetAll').get(function(req, res) {
     });
 });
 
-// guideRoutes.route('/:id').get(function (req, res){
-//     let campusid = req.params.id;
-//     console.log("yuor campus id is " +campusid);
-//     Student.findOne({$and:[{campusid : campusid}]},function (err,std){
-//         if(err)
-//             console.log(err);
-//         else{
-//             res.json(std)
-//         }
-//     });
-
-// });
 
 
 
@@ -110,22 +98,7 @@ hotelRoutes.route('/delete/:id').get(function(req,res){
 
 
 
-// hotelRoutes.route('/:id').get(function (req, res){
-//     let email = req.params.id;
-    
-//     Hotel.findOne({email : email}, function (err, hotel){
-//         if(err) {
-//             console.log(err);
-//             res.status(500).json({ error: 'Internal server error' });
-//         } else {
-//             if(hotel) {
-//                 res.json(hotel);
-//             } else {
-//                 res.status(404).json({ error: 'Hotel not found' });
-//             }
-//         }
-//     });
-// });
+
 
 
 hotelRoutes.route('/login').post(function (req, res){

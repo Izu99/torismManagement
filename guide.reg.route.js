@@ -19,53 +19,21 @@ guideRoutes.route('/guideAdd').post(function (req,res){
         });
 });
 
-// app.post("/uplodimage",async (req, res) => {
-// const {base64} = req.body;
-// try {
-//     await Image.create({base64});
-//     res.send({Status: "Success"});
-// } catch (error) {
-//     res.send({Status: "Error",data :error});
-// })
-
-// guideRoutes.route('/upload').post(async (req, res) => {
-//     try {
-//         const {base64} = req.body;
-//         await Image.create({base64});
-//         res.status(200).json({'guide': 'new guide is added successfully'});
-//     } catch (error) {
-//         res.status(400).send('Unable to save to database');
-//     }
-// });
 
 
-//get all details
-// Define a route for getting all customers
-guideRoutes.route('/GetAll').get(function(req, res) {
+
+guideRoutes.route('/getall').get(function(req, res) {
     // Find all documents in the 'Customer' collection
-    Guide.find(function(err, guide) {
+    Guide.find(function(err, registers) {
         if (err) {
             // If there was an error finding customers, log the error to the console
             console.log(err);
             // If customers were found successfully, return them as a JSON response
         } else {
-            res.json(guide);
+            res.json(registers);
         }
     });
 });
-
-// guideRoutes.route('/:id').get(function (req, res){
-//     let campusid = req.params.id;
-//     console.log("yuor campus id is " +campusid);
-//     Student.findOne({$and:[{campusid : campusid}]},function (err,std){
-//         if(err)
-//             console.log(err);
-//         else{
-//             res.json(std)
-//         }
-//     });
-
-// });
 
 
 
@@ -89,15 +57,15 @@ guideRoutes.route('/Update/:id').post(function (req,res){
              // Update the guide's fields with the new data from the request body
             guide.firstName = req.body.firstName;
             guide.lastName = req.body.lastName;
-            guide.email = req.body.email;
-            guide.countryCode = req.body.countryCode;
+            guide.age = req.body.age;
             guide.phoneNu = req.body.phoneNu;
-            guide.nic = req.body.nic;
-            guide.address = req.body.address;
-            guide.nationality = req.body.nationality;
-            guide.country = req.body.country;
-            guide.password = req.body.password;
-            guide.cpassword = req.body.cpassword;
+            guide.gender = req.body.gender;
+            guide.Licence = req.body.Licence;
+            guide.Education = req.body.Education;
+            guide.sinhala = req.body.sinhala;
+            guide.English = req.body.English;
+            guide.Korean = req.body.Korean;
+           
 
              // Save the updated guide to the database
             guide.save().then(business => {
@@ -113,7 +81,7 @@ guideRoutes.route('/Update/:id').post(function (req,res){
 });
 
 // Define a DELETE route at '/delete/:id'
-guideRoutes.route('/delete/:id').delete(function(req,res){
+guideRoutes.route('/delete/:id').get(function(req,res){
     // Use the 'findByIdAndRemove' method of the 'Customer' model to delete a customer by ID
     Guide.findByIdAndRemove({_id:req.params.id}, function (err, guide){
          // If there is an error, respond with the error message in JSON format
@@ -126,32 +94,6 @@ guideRoutes.route('/delete/:id').delete(function(req,res){
 
 
 
-
-// // Define a POST route at '/login'
-// guideRoutes.route('/login').post(function (req, res) {
-//     // Retrieve NIC and password from the request body
-//     let nic = req.body.nic;
-//     let password = req.body.password;
-//     // Log the login details for debugging purposes
-//     console.log("Your Login Details " + nic + " " + password);
-//     // Use the 'findOne' method of the 'Customer' model to find a customer with the specified NIC and password
-//     Customer.findOne({ nic: nic, password: password }, function (err, customer) {
-//         // If there is an error, respond with a 500 Internal Server Error message
-//         if (err) {
-//             console.log(err);
-//             res.status(500).send("Internal Server Error");
-//             // If no customer is found with the specified NIC and password, respond with a 401 Unauthorized message
-//         } else if (!customer) {
-//             res.status(401).send("Invalid Credentials");
-//             // If a customer is found with the specified NIC and password, respond with a 200 OK message and the customer object in JSON format
-//         } else {
-//             res.status(200).send({
-//                 message: "Successful Login",
-//                 customer: customer
-//             });
-//         }
-//     });
-// });
 
 
 module.exports = guideRoutes;

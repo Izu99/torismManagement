@@ -73,7 +73,7 @@ appointmentRoutes.route('/update/:id').post(function (req,res){
 });
 
 // Define a DELETE route at '/delete/:id'
-appointmentRoutes.route('/delete/:id').delete(function(req,res){
+appointmentRoutes.route('/delete/:id').get(function(req,res){
     // Use the 'findByIdAndRemove' method of the 'appointment' model to delete a appointment by ID
     Appointment.findByIdAndRemove({_id:req.params.id}, function (err, appointment){
          // If there is an error, respond with the error message in JSON format
