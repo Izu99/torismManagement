@@ -13,7 +13,11 @@ Room = new Schema({
     bType: {
         type: String
     },
-    capacity: {
+    pnumber: {
+        type: String
+    }
+    ,
+    email: {
         type: String
     }
  

@@ -4,7 +4,7 @@ const roomRoutes = express.Router();
 // Require the 'register.model' module and assign it to the variable 'Customer'
 let Room = require('./room.model');
 // Define a route for adding a new customer
-roomRoutes.route('/roomAdd').post(function (req,res){
+roomRoutes.route('/Add').post(function (req,res){
     // Create a new instance of the 'Customer' model with the data from the request body
     let room = new Room(req.body);
      // Save the new customer to the database
@@ -21,7 +21,7 @@ roomRoutes.route('/roomAdd').post(function (req,res){
 
 //get all details
 // Define a route for getting all customers
-roomRoutes.route('/roomGetAll').get(function(req, res) {
+roomRoutes.route('/getAll').get(function(req, res) {
     // Find all documents in the 'Customer' collection
     Room.find(function(err, room) {
         if (err) {
@@ -34,18 +34,6 @@ roomRoutes.route('/roomGetAll').get(function(req, res) {
     });
 });
 
-// guideRoutes.route('/:id').get(function (req, res){
-//     let campusid = req.params.id;
-//     console.log("yuor campus id is " +campusid);
-//     Student.findOne({$and:[{campusid : campusid}]},function (err,std){
-//         if(err)
-//             console.log(err);
-//         else{
-//             res.json(std)
-//         }
-//     });
-
-// });
 
 
 
@@ -57,7 +45,7 @@ roomRoutes.route('/edit/:id').get(function (req,res){
     });
 });
 // Define a route for updating a customer with a given id
-roomRoutes.route('/roomUpdate/:id').post(function (req,res){
+roomRoutes.route('/update/:id').post(function (req,res){
     // Get the id parameter from the request URL
     let id = req.params.id;
     // Find the customer with the given id in the database
@@ -70,7 +58,8 @@ roomRoutes.route('/roomUpdate/:id').post(function (req,res){
             room.rId = req.body.rId;
             room.rType = req.body.rType;
             room.bType = req.body.bType;
-            room.capacity = req.body.capacity;
+            room.pnumber = req.body.pnumber;
+            room.email = req.body.email;
        // Save the updated room to the database
             room.save().then(business => {
                 // If the customer was updated successfully, return a success message
@@ -85,7 +74,7 @@ roomRoutes.route('/roomUpdate/:id').post(function (req,res){
 });
 
 // Define a DELETE route at '/delete/:id'
-roomRoutes.route('/roomDelete/:id').delete(function(req,res){
+roomRoutes.route('/delete/:id').get(function(req,res){
     // Use the 'findByIdAndRemove' method of the 'Customer' model to delete a customer by ID
     Room.findByIdAndRemove({_id:req.params.id}, function (err, guide){
          // If there is an error, respond with the error message in JSON format

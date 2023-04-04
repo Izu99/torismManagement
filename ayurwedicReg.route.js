@@ -74,7 +74,7 @@ ayurvedaRoutes.route('/update/:id').post(function (req,res){
 });
 
 // Define a DELETE route at '/delete/:id'
-ayurvedaRoutes.route('/delete/:id').delete(function(req,res){
+ayurvedaRoutes.route('/delete/:id').get(function(req,res){
     // Use the 'findByIdAndRemove' method of the 'ayurveda' model to delete a ayurveda by ID
     Ayurveda.findByIdAndRemove({_id:req.params.id}, function (err, ayurveda){
          // If there is an error, respond with the error message in JSON format
